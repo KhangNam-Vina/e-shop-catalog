@@ -16,7 +16,7 @@ export default function ContactSection() {
                 Bạn cần tư vấn chi tiết?
               </h2>
               <p className="text-gray-400 text-lg mb-10 leading-relaxed">
-                Đừng ngần ngại liên hệ với đội ngũ của <span className="font-semibold text-white">{brand.name}</span>. Chúng tôi luôn sẵn sàng hỗ trợ bạn lựa chọn sản phẩm phù hợp nhất.
+                Đừng ngần ngại liên hệ với đội ngũ của E-shop. Chúng tôi luôn sẵn sàng hỗ trợ bạn lựa chọn sản phẩm phù hợp nhất.
               </p>
 
               <div className="space-y-6">
