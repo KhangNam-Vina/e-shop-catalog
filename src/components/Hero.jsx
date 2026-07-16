@@ -72,7 +72,7 @@ export default function Hero() {
           <div className="lg:col-span-5 flex justify-center">
             <div className="relative w-full max-w-md sm:max-w-lg aspect-[4/3] sm:aspect-square rounded-3xl overflow-hidden bg-white shadow-xl border border-gray-100 p-4">
               <img
-                src="/public/images/logo/logo_e-shop.jpg"
+                src="/images/logo/logo_e-shop.jpg"
                 alt="Product Banner"
                 className="w-full h-full object-cover rounded-2xl"
                 onError={(e) => {
