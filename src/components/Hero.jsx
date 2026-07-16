@@ -72,13 +72,9 @@ export default function Hero() {
           <div className="lg:col-span-5 flex justify-center">
             <div className="relative w-full max-w-md sm:max-w-lg aspect-[4/3] sm:aspect-square rounded-3xl overflow-hidden bg-white shadow-xl border border-gray-100 p-4">
               <img
-                src="/images/products/SP-01"
-                alt="Product Banner"
+                src="/images/products/SP-01.jpg"
+                alt="KhangNam Vina Banner"
                 className="w-full h-full object-cover rounded-2xl"
-                onError={(e) => {
-                  // Fallback ảnh mẫu chất lượng cao từ Unsplash nếu thư mục public chưa có ảnh
-                  e.target.src = "https://images.unsplash.com/photo-1595428774223-ef52624120d2?q=80&w=800&auto=format&fit=crop";
-                }}
               />
             </div>
           </div>
