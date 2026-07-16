@@ -1,0 +1,19 @@
+{
+  "brand": {
+    "name": "E-Shop Catalog",
+    "logo": "/public/images/logo/logo_e-shop.jpg",
+    "favicon": "/images/banner/favicon.ico",
+    "slogan": "Giải pháp lưu trữ thông minh & tiện lợi"
+  },
+  "contact": {
+    "phone": "0919 102 207",
+    "zalo": "https://zalo.me/0919102207", 
+    "email": "khangnamvina2022@gmail.com",
+    "website": "https://e-shop.com.vn",
+    "facebook": "https://www.facebook.com/eshopvina.05"
+  },
+  "theme": {
+    "primaryColor": "#1d4ed8", 
+    "secondaryColor": "#f3f4f6"
+  }
+}
