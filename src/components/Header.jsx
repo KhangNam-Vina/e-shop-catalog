@@ -13,7 +13,7 @@ export default function Header() {
           {brand.logo ? (
             <img 
               src={brand.logo} 
-              alt={brand.name} 
+              alt="KhangNam Vina" 
               className="h-9 sm:h-11 w-auto object-contain"
               onError={(e) => {
                 // Tự động ẩn thẻ ảnh nếu chưa có file logo thực tế để không bị lỗi hiển thị
@@ -22,7 +22,7 @@ export default function Header() {
             />
           ) : null}
           <span className="text-lg sm:text-xl font-extrabold tracking-tight text-gray-900">
-            {brand.name}
+            E-Shop
           </span>
         </a>
 
