@@ -5,22 +5,14 @@ export default function ProductCard({ product, onViewDetail }) {
   const { theme } = config;
 
   return (
-          <div className="relative aspect-square overflow-hidden bg-gray-50">
+    <div className="group bg-white rounded-2xl shadow-sm hover:shadow-xl border border-gray-100 overflow-hidden transition-all duration-300 flex flex-col h-full">
+      
+      {/* Phần Hình ảnh */}
+      <div className="relative aspect-square overflow-hidden bg-gray-50">
         <img
-          src={product.images[0]}
-          alt={product.name}
-          className="w-full h-full object-contain p-4"
-        />
-
-        <div className="flex gap-2 mt-2">
-          {product.images.map((image, index) => (
-            <img
-              key={index}
-              src={image}
-              alt={`${product.name}-${index}`}
-              className="w-16 h-16 object-cover rounded cursor-pointer"
-            />
-          ))}
+            src={product.images[0]}
+            alt={product.name}
+          />
         {/* Nhãn Tag */}
         <div className="absolute top-4 left-4">
           <span 

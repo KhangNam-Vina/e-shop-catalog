@@ -2,7 +2,10 @@
   {
     "id": "J-109",
     "name": "Hộp Đựng Đồ Mini 9 Ngăn Lắp Ghép Nhập Khẩu Hàn Quốc | J-109",
-    "image": "/images/products/J-109-z.png", 
+    "images": [ "/images/products/J-109-z.png",
+                      "/images/products/J-109-1.png",
+                      "/images/products/J-109-2.png"
+    ],
     "size": "Kích thước tổng: 400 x 260 x 210 mm - Kích thước từng hộc: 240 x 130 x 65 mm - Kích thước hộc chứa: 232 x 117 x 53 mm",
     "material": "Nhựa PP cao cấp",
     "colors": ["Trắng"],
