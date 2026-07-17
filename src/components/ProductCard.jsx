@@ -10,9 +10,9 @@ export default function ProductCard({ product, onViewDetail }) {
       {/* Phần Hình ảnh */}
       <div className="relative aspect-square overflow-hidden bg-gray-50">
         <img
-            src={product.images[0]}
-            alt={product.name}
-          />
+          src={Array.isArray(product.images) ? product.images[0] : product.image}
+          alt={product.name}
+        />
         {/* Nhãn Tag */}
         <div className="absolute top-4 left-4">
           <span 
