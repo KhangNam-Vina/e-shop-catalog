@@ -20,7 +20,10 @@
   {
     "id": "J-009",
     "name": "Hộp Đựng Đồ Mini 9 Ngăn Cố Định Nhập Khẩu Hàn Quốc | Mã J-009",
-    "image": "/images/products/J-009-z.png",
+   "images": [ 
+      "/images/products/J-009-z.png",
+      "/images/products/J-009-1.png"
+    ],
     "size": "Kích thước tổng: 410 x 260 x 230 mm - Kích thước hộc chứa: 232 x 117 x 53 mm",
     "material": "Nhựa ABS siêu bền",
     "colors": ["Trắng"],
@@ -34,7 +37,11 @@
   {
     "id": "J-106",
     "name": "Hộp Đựng Đồ Mini 6 Ngăn Lắp Ghép Nhập Khẩu Hàn Quốc | Mã J-106",
-    "image": "/images/products/J-106-z.png",
+    "images": [ 
+      "/images/products/J-106-z.png",
+      "/images/products/J-106-2.png",
+      "/images/products/J-106-1.png"
+    ],
     "size": "Kích thước tổng: 310 x 300 x 300 mm - Kích thước từng hộc: 290 x 150 x 100 mm - Kích thước hộc chứa: 279 x 135 x 88 mm",
     "material": "Nhựa ABS siêu bền",
     "colors": ["Trắng"],
@@ -48,7 +55,10 @@
   {
     "id": "J-206",
     "name": "Hộp Đựng Đồ Mini 6 Ngăn Cố Định Nhập Khẩu Hàn Quốc | Mã J-206",
-    "image": "/images/products/J-206-z.png",
+    "images": [ 
+      "/images/products/J-206-z.png",
+      "/images/products/J-206.png"
+    ],
     "size": "Kích thước tổng: 280 x 260 x 230 mm - Kích thước hộc chứa: 230 x 115 x 52 mm",
     "material": "Nhựa ABS siêu bền",
     "colors": ["Trắng"],
@@ -62,7 +72,11 @@
   {
     "id": "J-120",
     "name": "Hộp Đựng Đồ Mini 20 Ngăn Lắp Ghép Nhập Khẩu Hàn Quốc | Mã J-120",
-    "image": "/images/products/J-120-z.png",
+    "images": [ 
+      "/images/products/J-120-z.png",
+      "/images/products/J-120-2.png",
+      "/images/products/J-120-1.png"
+    ],
     "size": "Kích thước tổng: 317 x 163 x 203 mm - Kích thước từng hộc: 150 x 75 x 40 mm - Kích thước hộc chứa: 142 x 65 x 31 mm",
     "material": "Nhựa ABS siêu bền",
     "colors": ["Trắng"],
@@ -76,7 +90,10 @@
   {
     "id": "J-020",
     "name": "Hộp Đựng Đồ Mini 20 Ngăn Cố Định Nhập Khẩu Hàn Quốc | Mã J-020",
-    "image": "/images/products/J-020-z.png",
+    "images": [ 
+      "/images/products/J-020-z.png",
+      "/images/products/J-020.png"
+    ],
     "size": "Kích thước tổng: 320 x 160 x 230 mm - Kích thước hộc chứa: 142 x 65 x 31 mm",
     "material": "Nhựa ABS siêu bền",
     "colors": ["Trắng"],
@@ -90,7 +107,11 @@
   {
     "id": "J-112",
     "name": "Hộp Đựng Đồ Mini 12 Ngăn Lắp Ghép Nhập Khẩu Hàn Quốc | Mã J-112",
-    "image": "/images/products/J-112-z.png",
+    "images": [ 
+      "/images/products/J-112-z.png",
+      "/images/products/J-112-2.png",
+      "/images/products/J-112-1.png"
+    ],
     "size": "Kích thước tổng: 350 x 230 x 260 mm - Kích thước từng hộc: 213 x 115 x 65 mm - Kích thước hộc chứa: 206 x 103 x 54 mm",
     "material": "Nhựa ABS siêu bền",
     "colors": ["Trắng"],
@@ -104,7 +125,10 @@
   {
     "id": "J-012",
     "name": "Hộp Đựng Đồ Mini 12 Ngăn Cố Định Nhập Khẩu Hàn Quốc | Mã J-012",
-    "image": "/images/products/J-012-z.png",
+    "images": [ 
+      "/images/products/J-012-z.png",
+      "/images/products/J-012.png"
+    ],
     "size": "Kích thước tổng: 370 x 230 x 200 mm - Kích thước hộc chứa: 206 x 103 x 54 mm",
     "material": "Nhựa ABS siêu bền",
     "colors": ["Trắng"],

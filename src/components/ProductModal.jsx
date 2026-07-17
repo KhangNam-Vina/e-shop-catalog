@@ -18,6 +18,11 @@ export default function ProductModal({ product, onClose }) {
 
   if (!product) return null;
 
+  // Xử lý lấy ảnh an toàn: Ưu tiên lấy ảnh đầu tiên trong mảng 'images', nếu không có thì lấy 'image' cũ
+  const displayImage = Array.isArray(product.images) && product.images.length > 0 
+    ? product.images[0] 
+    : product.image;
+
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
       {/* Lớp nền mờ (Backdrop) - Bấm vào đây để đóng */}
@@ -42,9 +47,8 @@ export default function ProductModal({ product, onClose }) {
         {/* Khối hình ảnh bên trái */}
           <div className="w-full md:w-1/2 bg-gray-50 flex-shrink-0 relative">
             <img 
-              src={product.image} 
+              src={displayImage} 
               alt={product.name} 
-              // Thay đổi ở dòng class bên dưới này nhé:
               className="w-full h-56 sm:h-64 md:h-full object-contain p-4" 
               onError={(e) => {
                 e.target.src = "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=800&auto=format&fit=crop";
