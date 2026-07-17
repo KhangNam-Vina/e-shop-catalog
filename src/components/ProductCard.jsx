@@ -9,9 +9,14 @@ export default function ProductCard({ product, onViewDetail }) {
       
       {/* Phần Hình ảnh */}
       <div className="relative aspect-square overflow-hidden bg-gray-50">
-        <img
-          src={Array.isArray(product.images) ? product.images[0] : product.image}
-          alt={product.name}
+        <img 
+          src={product.image} 
+          alt={product.name} 
+          className="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-500"
+          onError={(e) => {
+            // Ảnh thay thế nếu chưa có ảnh thực tế
+            e.target.src = "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=600&auto=format&fit=crop";
+          }}
         />
         {/* Nhãn Tag */}
         <div className="absolute top-4 left-4">
