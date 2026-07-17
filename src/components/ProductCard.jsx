@@ -5,19 +5,22 @@ export default function ProductCard({ product, onViewDetail }) {
   const { theme } = config;
 
   return (
-    <div className="group bg-white rounded-2xl shadow-sm hover:shadow-xl border border-gray-100 overflow-hidden transition-all duration-300 flex flex-col h-full">
-      
-      {/* Phần Hình ảnh */}
-      <div className="relative aspect-square overflow-hidden bg-gray-50">
-        <img 
-          src={product.image} 
-          alt={product.name} 
-          className="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-500"
-          onError={(e) => {
-            // Ảnh thay thế nếu chưa có ảnh thực tế
-            e.target.src = "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=600&auto=format&fit=crop";
-          }}
+          <div className="relative aspect-square overflow-hidden bg-gray-50">
+        <img
+          src={product.images[0]}
+          alt={product.name}
+          className="w-full h-full object-contain p-4"
         />
+
+        <div className="flex gap-2 mt-2">
+          {product.images.map((image, index) => (
+            <img
+              key={index}
+              src={image}
+              alt={`${product.name}-${index}`}
+              className="w-16 h-16 object-cover rounded cursor-pointer"
+            />
+          ))}
         {/* Nhãn Tag */}
         <div className="absolute top-4 left-4">
           <span 
