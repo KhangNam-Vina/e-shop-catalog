@@ -4,15 +4,36 @@ import config from '../data/config.json';
 export default function ProductModal({ product, onClose }) {
   const { theme, contact } = config;
 
-  // Tạo state để theo dõi ảnh đang xem trong Modal
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Reset lại ảnh đầu tiên mỗi khi mở một sản phẩm mới
+  // Lấy mảng hình ảnh an toàn
+  const imageList = product ? (Array.isArray(product.images) ? product.images : (product.image ? [product.image] : [])) : [];
+
+  // 1. Reset lại ảnh đầu tiên mỗi khi mở một sản phẩm mới
   useEffect(() => {
     setCurrentIndex(0);
   }, [product]);
 
-  // Khóa cuộn chuột ở nền khi mở Modal
+  // 2. Tính năng Tự Động Cuộn Ảnh (Auto-play)
+  useEffect(() => {
+    let slideInterval;
+    
+    if (product && imageList.length > 1) {
+      slideInterval = setInterval(() => {
+        setCurrentIndex((prevIndex) => 
+          prevIndex === imageList.length - 1 ? 0 : prevIndex + 1
+        );
+      }, 3000); 
+    }
+
+    return () => {
+      if (slideInterval) {
+        clearInterval(slideInterval);
+      }
+    };
+  }, [product, imageList.length]);
+
+  // 3. Khóa cuộn chuột ở nền khi mở Modal
   useEffect(() => {
     if (product) {
       document.body.style.overflow = 'hidden';
@@ -26,10 +47,6 @@ export default function ProductModal({ product, onClose }) {
 
   if (!product) return null;
 
-  // Lấy mảng hình ảnh
-  const imageList = Array.isArray(product.images) ? product.images : (product.image ? [product.image] : []);
-
-  // Hàm xử lý nút Bấm Tới/Lui
   const handleNext = (e) => {
     e.stopPropagation();
     setCurrentIndex((prevIndex) => (prevIndex === imageList.length - 1 ? 0 : prevIndex + 1));
@@ -61,24 +78,24 @@ export default function ProductModal({ product, onClose }) {
           </svg>
         </button>
 
-        {/* Khối hình ảnh bên trái CÓ HIỆU ỨNG SLIDE */}
-        <div className="w-full md:w-1/2 bg-gray-50 flex-shrink-0 relative group flex items-center justify-center min-h-[250px]">
+        {/* Khối hình ảnh bên trái: ĐÃ THÊM overflow-hidden ĐỂ KHÔNG TRÀN ẢNH KHI ZOOM */}
+        <div className="w-full md:w-1/2 bg-gray-50 flex-shrink-0 relative group flex items-center justify-center min-h-[250px] overflow-hidden">
           
           {imageList.length > 0 && (
             <img 
               src={imageList[currentIndex]} 
               alt={product.name} 
-              className="w-full h-56 sm:h-64 md:h-full object-contain p-4 transition-opacity duration-300" 
+              // ĐÃ THÊM CLASS ZOOM: hover:scale-125 cursor-zoom-in transition-transform duration-500
+              className="w-full h-56 sm:h-64 md:h-full object-contain p-4 transition-transform duration-500 hover:scale-125 cursor-zoom-in" 
               onError={(e) => {
                 e.target.src = "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=800&auto=format&fit=crop";
               }}
             />
           )}
 
-          {/* Cụm Nút Điều Hướng (Chỉ hiện khi có > 1 ảnh) */}
+          {/* Cụm Nút Điều Hướng */}
           {imageList.length > 1 && (
             <>
-              {/* Nút Trái */}
               <button 
                 onClick={handlePrev}
                 className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/60 text-white w-10 h-10 flex items-center justify-center rounded-full opacity-0 group-hover:opacity-100 transition-all z-10"
@@ -86,7 +103,6 @@ export default function ProductModal({ product, onClose }) {
                 &#10094;
               </button>
               
-              {/* Nút Phải */}
               <button 
                 onClick={handleNext}
                 className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/60 text-white w-10 h-10 flex items-center justify-center rounded-full opacity-0 group-hover:opacity-100 transition-all z-10"
@@ -94,7 +110,6 @@ export default function ProductModal({ product, onClose }) {
                 &#10095;
               </button>
 
-              {/* Dấu chấm báo hiệu */}
               <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-10">
                 {imageList.map((_, idx) => (
                   <button 
@@ -111,7 +126,7 @@ export default function ProductModal({ product, onClose }) {
           )}
         </div>
 
-        {/* Khối thông tin bên phải giữ nguyên */}
+        {/* Khối thông tin bên phải */}
         <div className="w-full md:w-1/2 p-6 md:p-8 overflow-y-auto flex flex-col">
           <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">{product.name}</h3>
           
