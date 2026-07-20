@@ -1,22 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import config from '../data/config.json';
 
 export default function ProductCard({ product, onViewDetail }) {
   const { theme } = config;
 
-  // 1. Tạo bộ nhớ (state) để lưu xem người dùng đang xem tới ảnh thứ mấy (Mặc định là 0 - ảnh đầu tiên)
   const [currentIndex, setCurrentIndex] = useState(0);
+  
+  // Trạng thái theo dõi xem chuột có đang nằm trên hình không
+  const [isHovered, setIsHovered] = useState(false);
 
-  // 2. Chuyển đổi an toàn: Lấy mảng 'images' mới, nếu không có thì lấy 'image' cũ bọc vào mảng để không bị lỗi code
   const imageList = Array.isArray(product.images) ? product.images : (product.image ? [product.image] : []);
 
-  // 3. Hàm xử lý nút Bấm Tới (Next)
+  // Tính năng Tự Động Cuộn Ảnh (Auto-play)
+  useEffect(() => {
+    let slideInterval;
+    
+    // Chỉ tự chạy nếu có nhiều ảnh VÀ chuột không trỏ vào ảnh
+    if (imageList.length > 1 && !isHovered) {
+      slideInterval = setInterval(() => {
+        setCurrentIndex((prevIndex) => (prevIndex === imageList.length - 1 ? 0 : prevIndex + 1));
+      }, 3000); // 3000 = 3 giây đổi 1 lần
+    }
+
+    // Dọn dẹp bộ đếm
+    return () => {
+      if (slideInterval) clearInterval(slideInterval);
+    };
+  }, [imageList.length, isHovered]);
+
   const handleNext = (e) => {
-    e.stopPropagation(); // Tránh bị click nhầm vào các vùng khác của thẻ card
+    e.stopPropagation(); 
     setCurrentIndex((prevIndex) => (prevIndex === imageList.length - 1 ? 0 : prevIndex + 1));
   };
 
-  // 4. Hàm xử lý nút Bấm Lui (Prev)
   const handlePrev = (e) => {
     e.stopPropagation();
     setCurrentIndex((prevIndex) => (prevIndex === 0 ? imageList.length - 1 : prevIndex - 1));
@@ -25,8 +41,12 @@ export default function ProductCard({ product, onViewDetail }) {
   return (
     <div className="group bg-white rounded-2xl shadow-sm hover:shadow-xl border border-gray-100 overflow-hidden transition-all duration-300 flex flex-col h-full">
       
-      {/* Phần Hình ảnh có hiệu ứng Slide */}
-      <div className="relative aspect-square overflow-hidden bg-gray-50">
+      {/* Phần Hình ảnh: Bắt sự kiện đưa chuột vào (onMouseEnter) và rút chuột ra (onMouseLeave) */}
+      <div 
+        className="relative aspect-square overflow-hidden bg-gray-50"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
         
         {/* Render Hình ảnh */}
         {imageList.length > 0 && (
@@ -40,10 +60,9 @@ export default function ProductCard({ product, onViewDetail }) {
           />
         )}
 
-        {/* Cụm Nút Điều Hướng (CHỈ hiện lên khi rớt chuột vào card VÀ số lượng ảnh phải > 1) */}
+        {/* Cụm Nút Điều Hướng */}
         {imageList.length > 1 && (
           <>
-            {/* Nút Trái (<) */}
             <button 
               onClick={handlePrev}
               className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/20 hover:bg-black/50 text-white w-8 h-8 flex items-center justify-center rounded-full opacity-0 group-hover:opacity-100 transition-opacity z-10"
@@ -51,7 +70,6 @@ export default function ProductCard({ product, onViewDetail }) {
               &#10094;
             </button>
             
-            {/* Nút Phải (>) */}
             <button 
               onClick={handleNext}
               className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/20 hover:bg-black/50 text-white w-8 h-8 flex items-center justify-center rounded-full opacity-0 group-hover:opacity-100 transition-opacity z-10"
@@ -59,7 +77,7 @@ export default function ProductCard({ product, onViewDetail }) {
               &#10095;
             </button>
 
-            {/* Dấu chấm báo hiệu vị trí ảnh ở cạnh dưới */}
+            {/* Dấu chấm báo hiệu vị trí ảnh */}
             <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-1.5 z-10">
               {imageList.map((_, idx) => (
                 <div 
@@ -71,7 +89,7 @@ export default function ProductCard({ product, onViewDetail }) {
           </>
         )}
 
-        {/* Nhãn Tag (Của code cũ) */}
+        {/* Nhãn Tag */}
         <div className="absolute top-4 left-4 z-10">
           <span 
             style={{ backgroundColor: theme.primaryColor }}
@@ -82,7 +100,7 @@ export default function ProductCard({ product, onViewDetail }) {
         </div>
       </div>
 
-      {/* Phần Nội dung và Nút Bấm bên dưới giữ nguyên y xì của bro */}
+      {/* Phần Nội dung */}
       <div className="p-5 sm:p-6 flex flex-col flex-grow">
         <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 line-clamp-2">
           {product.name}
